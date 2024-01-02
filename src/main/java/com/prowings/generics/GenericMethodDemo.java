@@ -1,34 +1,34 @@
 package com.prowings.generics;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class GenericMethodDemo {
-
-	public <T> boolean m1(T t) {
-		// some logic
-		System.out.println(t.getClass().getName());
-		return false;
-	}
-
-	public <T extends Number> double average(T[] array) {
-        double sum = 0.0;
-        for (T element : array) {
-            sum += element.doubleValue();
-        }
-        return sum / array.length;
-    }
 	
+	//non generic method to convert Array to List
+	public static List covertArrayToList(int[] arr)
+	{
+		List lst = new ArrayList();
+		for(int a : arr)
+			lst.add(a);
+		return lst;
+	}
+	
+
 	
 	public static void main(String[] args) {
-
-		GenericMethodDemo obj = new GenericMethodDemo();
-		obj.m1("Hello");
 		
-		Integer[] nums = {10,20,30,40,50};
-		Long[] nums1 = {10L,20L,30L,40L,50L};
-		String[] words = {"aaa","bbb","ccc"};
+		int[] nums = {10,20,30,50,60};
 		
-		System.out.println("Average is : "+obj.average(nums));
-		System.out.println("Average is : "+obj.average(nums1));
-//		System.out.println("Average is : "+obj.average(words));
+		System.out.println(covertArrayToList(nums));
+		
+		List result = covertArrayToList(nums);
+		
+		for(Object n : result)
+		{
+			Integer x = (Integer) n; //casting - error prone
+		}
 	}
-
+	
 }
