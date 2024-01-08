@@ -18,20 +18,30 @@ public class Example2 {
 		ramsPhoneNumbers.add(999977773333l);
 
 		HashSet<Long> shamsPhoneNumbers = new HashSet<>();
-		ramsPhoneNumbers.add(12121212l);
-		ramsPhoneNumbers.add(23232323l);
-		ramsPhoneNumbers.add(45454545l);
+		shamsPhoneNumbers.add(12121212l);
+		shamsPhoneNumbers.add(23232323l);
+		shamsPhoneNumbers.add(45454545l);
 		
 		contactDetails.put("Ram", ramsPhoneNumbers);
 		contactDetails.put("Sham", shamsPhoneNumbers);
 		
-		Long mobileNum = 111122224444l;
-		System.out.println(searchContactNameByMobile(mobileNum));
+		Long mobileNum = 23232323l;
+		System.out.println(searchContactNameByMobile(mobileNum, contactDetails));
 	}
 
-	public static String searchContactNameByMobile(Long mobileNum) {
+	public static String searchContactNameByMobile(Long mobileNum, Map<String, HashSet<Long>> contactDetails) {
 		
-		return null;
+		String name = "";
+		for(Map.Entry<String, HashSet<Long>> entry : contactDetails.entrySet())
+		{
+			String key =  entry.getKey();
+			HashSet<Long> value = entry.getValue();
+			
+			if(value.contains(mobileNum))
+				name = key;
+			
+		}
+		return name;
 	}
 
 }

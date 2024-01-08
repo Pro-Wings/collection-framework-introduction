@@ -1,6 +1,6 @@
 package com.prowings.map;
 
-public class Car {
+public class Car implements Comparable<Car>{
 	
 	private int makeYear;
 	private String companyName;
@@ -60,6 +60,16 @@ public class Car {
 
 		System.out.println("finalize invoked on Car object : "+this);
 		super.finalize();
+	}
+	@Override
+	public int compareTo(Car o) {
+		
+		if(this.makeYear == o.makeYear)
+			return 0;
+		else if(this.makeYear > o.makeYear)
+			return 2;
+		else
+			return -4;
 	}
 	
 	
